@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Path Recommendation Engine</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsiveness.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <h1>Academic Path</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Submissions.html">Submissions</a></li>
+
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <section class="hero">
+        <h1>Academic Pathway Recommendation Engine</h1>
+
+        <p>
+            Discover the most valuable academic pathway based on you qualifications, experience, profession, and career aspirations.
+        </p>
+    </section>
+
+    <!-- form -->
+     <section class="form-section">
+        <div class="form-container">
+            <h2>Profile Information</h2>
+            <form id="recommendationForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="qualification">HighestQualification</label>
+                    <select id="qualification" required>
+                        <option value="">Select Qualification</option>
+                        <option>10th</option>
+                        <option>12th</option>
+                        <option>Diploma</option>
+                        <option>Bachelor's Degree</option>
+                        <option>Master's Degree</option>
+                        <option>PhD</option>
+                    </select>
+                </div> 
+
+                <div class="form-group">
+                    <label for="experience">Years of Experience</label>
+                    <input type="number" id="experience" min="0" placeholder="Enter your years of experience" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="profession">Current Profession</label>
+                    <input type="text" id="profession" placeholder="Enter your current profession" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="careerGoal">Career Goal</label>
+                    <textarea id="careerGoal" rows="4" placeholder="Describe your career goals" required></textarea>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" id="submitBtn">
+                        Get Recommendation
+                    </button>
+
+                    <button type="reset">
+                        Reset
+                    </button>
+                </div>
+            </form>
+        </div>
+     </section>
+
+     <div id="loading" class="loading hidden">
+        Generating recommendation...
+     </div>
+
+     <div class="recommendation-section">
+        <div class="recommendation-card hidden" id="recommendationCard">
+            <h2>Recommended Academic Path</h2>
+            <h2>Your Recommendation</h2>
+            <div class="result-item">
+                <h3>Recommended Path</h3>
+                <p id="recommendationText">
+                    -
+                </p>
+            </div>   
+            <div class="result-item">
+                <h3>Reason</h3>
+                <p id="reasonText">
+                    -
+                </p>
+            </div>
+
+            <div class="result-item">
+                <h3>Generated On</h3>
+                <p id="generatedTime">
+                    -
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Academic Path Recommendation Engine</p>
+    </footer>
+
+    <script src="../js/form.js"></script>
+    <script src="../js/api.js"></script>
+</body>
+</html>
