@@ -5,7 +5,7 @@ generateRecommendation
 );
 
 const {
-    sendRecommendationEmail
+    sendRecommendationEmailNonBlocking
 } = require(
     "../services/emailService"
 );
@@ -62,22 +62,17 @@ console.log(profile);
 console.log("EMAIL:");
 console.log(profile.email);
 
-console.log("Before Email");
+console.log("Sending email (non-blocking)...");
 
-await sendRecommendationEmail(
+// Send email non-blocking - won't block API response
+sendRecommendationEmailNonBlocking(
     profile.fullname,
     profile.email,
     aiResult.recommendation,
     aiResult.reason
 );
 
-console.log("After Email");
-console.log("Before Response");
-res.json(aiResult);
-console.log("Response Sent");
-console.log("Email:", profile.email);
-console.log("Profile:", profile);
-
+console.log("Email queued - sending response");
 res.json(aiResult);
 
 }catch(error){
