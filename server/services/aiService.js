@@ -1,6 +1,11 @@
+const Groq = require("groq-sdk");
+const { buildPrompt } = require("../utils/promptTemplate");
+
+const groq = new Groq({
+    apiKey: process.env.GROQ_API_KEY
+});
+
 async function generateRecommendation(profile) {
-    const Groq = require("groq-sdk");
-    const { buildPrompt } = require("../utils/promptTemplate");
 
     console.log("PROFILE RECEIVED:");
     console.log(profile);
@@ -20,7 +25,9 @@ async function generateRecommendation(profile) {
         model: "llama-3.3-70b-versatile",
         temperature: 0.5,
         max_tokens: 1024,
-        response_format: { type: "json_object" }
+        response_format: {
+            type: "json_object"
+        }
     });
 
     const content =
