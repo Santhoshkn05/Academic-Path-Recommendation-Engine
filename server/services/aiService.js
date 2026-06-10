@@ -1,4 +1,5 @@
 async function generateRecommendation(profile) {
+    const Groq = require("groq-sdk");
     const { buildPrompt } = require("../utils/promptTemplate");
 
     console.log("PROFILE RECEIVED:");
