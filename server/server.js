@@ -1,7 +1,15 @@
 require("dotenv").config();
 
 const express = require("express");
-const cors = require("cors");
+app.use(cors({
+    origin: [
+        "https://academic-path-recommendation-engine.vercel.app",
+        "http://localhost:5500",
+        "http://127.0.0.1:5500"
+    ],
+    methods: ["GET", "POST", "DELETE", "PUT"],
+    credentials: true
+}));
 
 const recommendationRoutes =
 require("./routes/recommendationRoutes");
