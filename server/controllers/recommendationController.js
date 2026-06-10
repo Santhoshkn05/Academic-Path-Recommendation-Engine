@@ -62,12 +62,19 @@ console.log(profile);
 console.log("EMAIL:");
 console.log(profile.email);
 
+console.log("Before Email");
+
 await sendRecommendationEmail(
     profile.fullname,
     profile.email,
     aiResult.recommendation,
     aiResult.reason
 );
+
+console.log("After Email");
+console.log("Before Response");
+res.json(aiResult);
+console.log("Response Sent");
 console.log("Email:", profile.email);
 console.log("Profile:", profile);
 

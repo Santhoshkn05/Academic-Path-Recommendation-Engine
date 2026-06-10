@@ -82,6 +82,7 @@ async function sendRecommendationEmail(
         "Email sent successfully:",
         info.messageId
     );
+    console.log(info);
 
     return info;
 }
