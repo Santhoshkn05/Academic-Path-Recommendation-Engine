@@ -6,9 +6,7 @@ generateRecommendation
 
 const {
     sendRecommendationEmailNonBlocking
-} = require(
-    "../services/emailService"
-);
+} = require("../services/emailService");
 
 const supabase =
 require("../database/supabaseClient");
@@ -64,7 +62,6 @@ console.log(profile.email);
 
 console.log("Sending email (non-blocking)...");
 
-// Send email non-blocking - won't block API response
 sendRecommendationEmailNonBlocking(
     profile.fullname,
     profile.email,
