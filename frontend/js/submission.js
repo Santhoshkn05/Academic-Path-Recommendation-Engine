@@ -7,7 +7,7 @@ async function loadSubmissions() {
 
         const response =
         await fetch(
-            "https://academic-path-recommendation-engine.onrender.com/api/submissions"
+            "http://localhost:5000/api/submissions"
         );
 
         const submissions =
@@ -70,7 +70,7 @@ function updateStatistics(data) {
     ).textContent =
     data.filter(
         item =>
-        item.recommendation === "DBA"
+        item.recommendation.includes("DBA")
     ).length;
 
     document.getElementById(
@@ -93,7 +93,7 @@ async function deleteSubmission(id) {
         
         const response =
         await fetch(
-            `https://academic-path-recommendation-engine.onrender.com/api/submissions/${id}`,
+            `http://localhost:5000/api/submissions/${id}`,
             {
                 method: "DELETE"
             }

@@ -11,7 +11,7 @@ async function sendRecommendationEmail(
     try {
 
         const data = await resend.emails.send({
-            from: "Academic path service <no-reply@acpaths.com>",
+            from: "onboarding@resend.dev",
             to: email,
             subject: "Academic Pathway Recommendation",
             html: `
@@ -28,14 +28,12 @@ async function sendRecommendationEmail(
         console.log("Email sent:", data);
 
     } catch (error) {
-
-        console.error("Email error:", error);
+        console.error("EMAIL ERROR:");
+        console.error(error);
+        console.error(JSON.stringify(error, null, 2));
     }
 }
 
 module.exports = {
-    createTransporter,
-    verifyEmailConnection,
-    sendRecommendationEmail,
-    sendRecommendationEmailNonBlocking
+    sendRecommendationEmail
 };

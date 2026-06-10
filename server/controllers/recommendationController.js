@@ -5,7 +5,7 @@ generateRecommendation
 );
 
 const {
-    sendRecommendationEmailNonBlocking
+    sendRecommendationEmail
 } = require("../services/emailService");
 
 const supabase =
@@ -62,12 +62,15 @@ console.log(profile.email);
 
 console.log("Sending email (non-blocking)...");
 
-sendRecommendationEmailNonBlocking(
+// Send email non-blocking - don't await
+sendRecommendationEmail(
     profile.fullname,
     profile.email,
     aiResult.recommendation,
     aiResult.reason
-);
+).catch(error => {
+    console.error("Email send failed:", error.message);
+});
 
 console.log("Email queued - sending response");
 res.json(aiResult);
