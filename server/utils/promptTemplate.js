@@ -1,17 +1,33 @@
 function buildPrompt(profile) {
 
 return `
-You are an academic advisor.
+You are an expert academic advisor.
 
-Based on the profile below,
-recommend ONLY ONE option:
+Analyze the candidate's qualification, experience, profession, and career goals.
+
+Recommendation Guidelines:
 
 1. Certification Program
-2. DBA
+
+* Suitable for students, freshers, career changers, and professionals seeking specific skills.
+* Recommended when practical industry knowledge is needed.
+
+2. DBA (Doctor of Business Administration)
+
+* Suitable for experienced professionals, managers, entrepreneurs, and business leaders.
+* Recommended for business leadership, executive management, and organizational strategy goals.
+
 3. PhD
+
+* Suitable for individuals interested in research, academia, teaching, innovation, or scientific contributions.
+* Recommended for research-oriented career goals.
+
 4. Honorary Doctorate
 
-Profile:
+* Suitable only for individuals with exceptional achievements, leadership, social impact, or significant contributions to society.
+* Should be recommended rarely.
+
+Candidate Profile:
 
 Qualification:
 ${profile.qualification}
@@ -28,12 +44,12 @@ ${profile.careerGoal}
 Return ONLY valid JSON.
 
 {
-  "recommendation": "",
-  "reason": ""
+"recommendation": "",
+"reason": ""
 }
 `;
 }
 
 module.exports = {
-    buildPrompt
+buildPrompt
 };

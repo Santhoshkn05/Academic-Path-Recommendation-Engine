@@ -9,7 +9,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use("/api/recommend", recommendationRoutes);
+app.use("/api/recommendations", recommendationRoutes);
 app.use("/api/submissions", submissionRoutes);
 
 const PORT = process.env.PORT || 5000;

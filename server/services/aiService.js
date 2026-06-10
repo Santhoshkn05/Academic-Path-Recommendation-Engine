@@ -1,64 +1,13 @@
-const Groq = require("groq-sdk");
-
-const groq = new Groq({
-    apiKey: process.env.GROQ_API_KEY
-});
-
-function buildPrompt(profile) {
-return `
-You are an academic career advisor.
-
-You must recommend exactly one:
-
-1. Certification Program
-2. DBA
-3. PhD
-4. Honorary Doctorate
-
-Guidelines:
-
-- PhD:
-  Research careers, academia, scientist roles,
-  innovation, teaching.
-
-- DBA:
-  Business leadership, executive positions,
-  management careers.
-
-- Honorary Doctorate:
-  Exceptional professional achievements,
-  usually 15+ years experience.
-
-- Certification Program:
-  Skill enhancement, career transition,
-  practical industry growth.
-
-Profile:
-
-Qualification:
-${profile.qualification}
-
-Experience:
-${profile.experience}
-
-Profession:
-${profile.profession}
-
-Career Goal:
-${profile.careerGoal}
-
-Return ONLY JSON.
-
-{
-  "recommendation":"",
-  "reason":""
-}
-`;
-}
-
 async function generateRecommendation(profile) {
+
+    console.log("PROFILE RECEIVED:");
+    console.log(profile);
+
     const prompt = buildPrompt(profile);
-    
+
+    console.log("PROMPT:");
+    console.log(prompt);
+
     const response = await groq.chat.completions.create({
         messages: [
             {
@@ -71,11 +20,12 @@ async function generateRecommendation(profile) {
         max_tokens: 1024,
         response_format: { type: "json_object" }
     });
-    
-    const content = response.choices[0].message.content;
+
+    const content =
+        response.choices[0].message.content;
+
+    console.log("AI RESPONSE:");
+    console.log(content);
+
     return JSON.parse(content);
 }
-
-module.exports = {
-    generateRecommendation
-};
