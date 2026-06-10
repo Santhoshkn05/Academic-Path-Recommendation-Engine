@@ -22,7 +22,7 @@ form.addEventListener("submit", async (e) => {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/recommendations",
+            "https://academic-path-recommendation-engine.onrender.com/api/recommendations",
             {
                 method: "POST",
                 headers: {

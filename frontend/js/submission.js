@@ -7,7 +7,7 @@ async function loadSubmissions() {
 
         const response =
         await fetch(
-            "http://localhost:5000/api/submissions"
+            "https://academic-path-recommendation-engine.onrender.com/api/submissions"
         );
 
         const submissions =
@@ -93,7 +93,7 @@ async function deleteSubmission(id) {
         
         const response =
         await fetch(
-            `http://localhost:5000/api/submissions/${id}`,
+            `https://academic-path-recommendation-engine.onrender.com/api/submissions/${id}`,
             {
                 method: "DELETE"
             }
