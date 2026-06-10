@@ -1,15 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
-app.use(cors({
-    origin: [
-        "https://academic-path-recommendation-engine.vercel.app",
-        "http://localhost:5500",
-        "http://127.0.0.1:5500"
-    ],
-    methods: ["GET", "POST", "DELETE", "PUT"],
-    credentials: true
-}));
+const cors = require("cors");
 
 const recommendationRoutes =
 require("./routes/recommendationRoutes");
@@ -19,7 +11,14 @@ require("./routes/submissionRoutes");
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: [
+        "https://academic-path-recommendation-engine.vercel.app",
+        "http://localhost:5500",
+        "http://127.0.0.1:5500"
+    ]
+}));
+
 app.use(express.json());
 
 app.use(
@@ -32,13 +31,12 @@ app.use(
     submissionRoutes
 );
 
-const PORT =
-process.env.PORT || 5000;
+app.get("/", (req, res) => {
+    res.send("Backend Working");
+});
+
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-
-    console.log(
-        `Server running on port ${PORT}`
-    );
-
+    console.log(`Server running on port ${PORT}`);
 });
