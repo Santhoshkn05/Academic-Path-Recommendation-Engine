@@ -1,4 +1,5 @@
 async function generateRecommendation(profile) {
+    const { buildPrompt } = require("../utils/promptTemplate");
 
     console.log("PROFILE RECEIVED:");
     console.log(profile);
