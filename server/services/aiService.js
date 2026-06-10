@@ -29,3 +29,7 @@ async function generateRecommendation(profile) {
 
     return JSON.parse(content);
 }
+
+module.exports = {
+    generateRecommendation
+};
