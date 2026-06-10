@@ -34,5 +34,8 @@ async function sendRecommendationEmail(
 }
 
 module.exports = {
-    sendRecommendationEmail
+    createTransporter,
+    verifyEmailConnection,
+    sendRecommendationEmail,
+    sendRecommendationEmailNonBlocking
 };
